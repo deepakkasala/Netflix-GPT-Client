@@ -2,6 +2,8 @@
 
 - Installed npm react-vite scaffold.
 - Configured TailwindCSS.
+- Built Header Component.
+- Built Login form
 
 # Features
 
