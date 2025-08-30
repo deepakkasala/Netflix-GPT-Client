@@ -3,7 +3,12 @@
 - Installed npm react-vite scaffold.
 - Configured TailwindCSS.
 - Built Header Component.
-- Built Login form
+- Configured Routing
+- Built Login form & Sign-up form.
+- Form Validation.
+- Sign-up/Sign-in backend logic
+- Integrated Sign-up/Sign-in backend logic with UI
+- Configured Redux store.
 
 # Features
 
