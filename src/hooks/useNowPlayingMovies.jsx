@@ -1,0 +1,37 @@
+import { useDispatch } from "react-redux";
+import { addNowPlayingMovies } from "../redux/moviesSlice";
+import { useEffect } from "react";
+import axios from "axios";
+
+const useNowPlayingMovies = () => {
+  //Fetch movies data from TMDB API and updating it to Redux store.
+  const dispatch = useDispatch();
+  const getNowPlayingMovies = async () => {
+    console.log("Now playing fn called");
+
+    // const data = await fetch(
+    //   "https://api.themoviedb.org/3/movie/now_playing?page=1",
+    //   API_OPTIONS
+    // );
+    // const data = await fetch("http://localhost:4050/now-playing")
+    //   .then((res) => {
+    //     console.log("res is->", res.results);
+    //   })
+    //   .catch((err) => console.error(err));
+    axios
+      .get("http://localhost:4001/now-playing")
+      .then((res) => {
+        // console.log(res);
+        console.log(res?.data[0]?.results);
+        dispatch(addNowPlayingMovies(res?.data[0]?.results));
+      })
+      .catch((err) => console.error(err));
+  };
+  useEffect(() => {
+    console.log("useEffect called");
+
+    getNowPlayingMovies();
+  }, []);
+};
+
+export default useNowPlayingMovies;

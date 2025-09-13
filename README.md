@@ -9,6 +9,11 @@
 - Sign-up/Sign-in backend logic
 - Integrated Sign-up/Sign-in backend logic with UI
 - Configured Redux store.
+- Bugfix : When user login and logout.
+- Store the image URLs into constants file.
+- Added Protected route and Private route for dashboard and login components for authorized access
+- Created an account in TMDB website and got access to movies data via APIs.
+- Created Now playing end-point and got Nowplaying movies data to frontend
 
 # Features
 

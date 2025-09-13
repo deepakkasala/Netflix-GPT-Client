@@ -2,11 +2,11 @@ import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Header from "./Header";
 import { checkValidData } from "../utils/validateForm";
-import { API_URL } from "../utils/constants";
+import { API_URL, BACKGROUND_IMAGE } from "../utils/constants";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addUser } from "../redux/userSlice";
+import { addUser, clearUser } from "../redux/userSlice";
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
@@ -16,6 +16,8 @@ const Login = () => {
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
+  const user = useSelector((state) => state.user);
+  console.log("User:", user);
 
   const handleBtnClick = async (e) => {
     e.preventDefault();
@@ -54,6 +56,7 @@ const Login = () => {
         });
         if (response.data.success) {
           localStorage.setItem("token", response.data.token);
+          localStorage.setItem("user", JSON.stringify(response.data.user));
           // Dispatch user data to Redux store
           console.log(response.data.user);
           dispatch(addUser(response.data.user));
@@ -68,13 +71,14 @@ const Login = () => {
     }
     // Handle sign in or sign up logic
   };
+
   return (
     <div>
       <Header />
       <div className="absolute w-full h-full">
         <img
           className="w-full h-full object-cover"
-          src={`https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg`}
+          src={BACKGROUND_IMAGE}
           alt="Netflix Background"
         />
         <div className="absolute inset-0 bg-black/40"></div>
