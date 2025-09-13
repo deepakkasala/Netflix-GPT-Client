@@ -12,11 +12,9 @@ export const USER_AVATAR =
 
 export const API_OPTIONS = {
   method: "GET",
-
   headers: {
     accept: "application/json",
-
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJkOWZlMWJlOWVhN2YzMGY0MjRhOTkyYzQzYWQ0NjRjZiIsIm5iZiI6MTc1NzM1MDAyNi4wODksInN1YiI6IjY4YmYwODhhYjc4YjA0ZWRhMjRlNjI3NSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.H3eHXGoY5PqpuanLnH3IdN13SAU7-Xqs7Ddt42PbD6I",
+      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4ODY3ZDMxYjFhMjJhYzkwNTcyNDRiNTg4MWNhNTE2NSIsIm5iZiI6MTc1Nzc0NzEwMi42MDksInN1YiI6IjY4YzUxNzllZWM5YzY5YzI2YjMyNzYzNCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fA-MUz7HA3JBo6dGdFmRwch9RNO9bL0GyRGL9ONODjM",
   },
 };
