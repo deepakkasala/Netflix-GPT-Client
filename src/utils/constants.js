@@ -1,6 +1,7 @@
-const PORT = 3070;
-export const API_URL = `http://localhost:${PORT}/`;
+// const PORT = 3070;
+// export const API_URL = `http://localhost:${PORT}/`;
 
+export const API_URL = import.meta.env.VITE_API_URL;
 export const BACKGROUND_IMAGE =
   "https://assets.nflxext.com/ffe/siteui/vlv3/fc164b4b-f085-44ee-bb7f-ec7df8539eff/d23a1608-7d90-4da1-93d6-bae2fe60a69b/IN-en-20230814-popsignuptwoweeks-perspective_alpha_website_large.jpg";
 
