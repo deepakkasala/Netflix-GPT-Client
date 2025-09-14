@@ -79,69 +79,88 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="relative min-h-screen w-full">
       <Header />
-      <div className="absolute w-full h-full">
+      {/* Background Image with overlay */}
+      <div className="absolute inset-0">
         <img
           className="w-full h-full object-cover"
           src={BACKGROUND_IMAGE}
           alt="Netflix Background"
         />
-        <div className="absolute inset-0 bg-black/40"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
       </div>
+
+      {/* Login/Signup Form */}
       <form
-        className={`xl:w-1/4 lg:w-1/4 md:w-1/3 sm:w-1/2 absolute my-36 mx-auto right-0 left-0 text-white rounded-lg p-12 bg-black/80 bg-opacity-50 ${
-          isSignIn ? "h-[700px]" : "h-[600px]"
+        className={`w-11/12 sm:w-4/5 md:w-2/3 lg:w-1/3 xl:w-1/4 absolute top-28 sm:top-36 left-1/2 -translate-x-1/2 text-white rounded-lg p-6 sm:p-8 md:p-10 lg:p-12 bg-black/80 shadow-lg ${
+          isSignIn ? "min-h-[600px]" : "min-h-[500px]"
         }`}
         onSubmit={handleBtnClick}
       >
-        <h1 className="font-semibold text-3xl py-8">
+        <h1 className="font-semibold text-2xl sm:text-3xl py-4 sm:py-6 text-center">
           {isSignIn ? "Sign In" : "Sign Up"}
         </h1>
+
+        {/* Full Name only for Sign Up */}
         {!isSignIn && (
           <input
             ref={name}
             type="text"
             placeholder="Full Name"
-            className="xl:p-3.5 lg:p-2.5 md:p-1.5 sm:p-0.5 xs:p-[2px] my-2 w-full text-gray-100 font-medium bg-black-900 border-[0.5px] border-gray-400 rounded"
+            className="p-3 my-2 w-full text-gray-100 bg-black border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-red-600"
           />
         )}
+
+        {/* Email */}
         <input
           type="email"
           placeholder="Email address"
-          className="xl:p-3.5 lg:p-2.5 md:p-1.5 sm:p-0.5 xs:p-[2px] my-2 w-full text-gray-100 font-medium bg-black-900 border-[0.5px] border-gray-400 rounded"
+          className="p-3 my-2 w-full text-gray-100 bg-black border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-red-600"
           ref={email}
         />
+
+        {/* Password */}
         <input
           type="password"
           placeholder="Password"
-          className="xl:p-3.5 lg:p-2.5 md:p-1.5 sm:p-0.5 xs:p-[2px] my-2 w-full text-gray-100 font-medium bg-black-900 border-[0.5px] border-gray-400 rounded"
+          className="p-3 my-2 w-full text-gray-100 bg-black border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-red-600"
           ref={password}
         />
-        {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+
+        {/* Error */}
+        {errorMessage && (
+          <p className="text-red-500 text-sm mt-1">{errorMessage}</p>
+        )}
+
+        {/* Submit button */}
         <button
           type="submit"
-          className="xl:p-2 lg:p-1 md:p-0.5 sm:p-0.5 xs:p-[2px] my-6 bg-red-600 hover:bg-red-700 text-white font-semibold text-lg cursor-pointer w-full rounded-lg opacity-100"
+          className="p-3 my-6 bg-red-600 hover:bg-red-700 transition text-white font-semibold text-lg cursor-pointer w-full rounded-lg"
         >
           {isSignIn ? "Sign In" : "Sign Up"}
         </button>
+
+        {/* Extra options for Sign In */}
         {isSignIn && (
           <div>
-            <p className="text-center font-bold text-lg text-gray-300">OR</p>
-            <button className="xl:p-2 lg:p-1 md:p-0.5 sm:p-0.5 xs:p-[2px] my-4 bg-gray-700/70 hover:bg-gray-700 text-white font-semibold text-lg cursor-pointer w-full rounded-lg opacity-100">
+            <p className="text-center font-medium text-gray-300">OR</p>
+            <button className="p-3 my-4 bg-gray-700/70 hover:bg-gray-700 transition text-white font-medium w-full rounded-lg">
               Use a sign-in code
             </button>
-            <p className="text-center font-semibold text-lg underline">
+            <p className="text-center text-sm sm:text-base underline cursor-pointer hover:text-gray-200">
               Forgot Password?
             </p>
             <div className="flex items-center gap-2 my-4">
-              <input type="checkbox" className="px-5" />
-              <label className="text-lg">Remember Me</label>
+              <input type="checkbox" className="cursor-pointer" />
+              <label className="text-sm sm:text-base">Remember Me</label>
             </div>
           </div>
         )}
+
+        {/* Toggle between Sign In and Sign Up */}
         <p
-          className="py-5 cursor-pointer underline"
+          className="py-5 cursor-pointer underline text-center hover:text-gray-200"
           onClick={() => setIsSignIn(!isSignIn)}
         >
           {isSignIn

@@ -57,7 +57,7 @@ const MultiMovieTrailerPlayer = ({ movies }) => {
   const currentMovie = movies[currentIndex];
 
   return (
-    <div className="relative w-screen">
+    <div className="relative w-full">
       <VideoTitle
         title={currentMovie.original_title}
         overview={currentMovie.overview}

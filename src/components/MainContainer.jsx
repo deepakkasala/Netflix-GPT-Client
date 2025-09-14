@@ -8,7 +8,7 @@ const MainContainer = () => {
   if (!movies || movies.length === 0) return null;
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <MultiMovieTrailerPlayer movies={movies} />
     </div>
   );

@@ -17,7 +17,7 @@ const VideoBackground = ({ movieId, onVideoEnd }) => {
   const playlistIds = trailers.map((t) => t.key).join(",");
 
   return (
-    <div className="w-screen relative">
+    <div className="w-full relative">
       {isLoading && (
         <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-20">
           <div className="loader border-4 border-t-4 border-gray-200 rounded-full w-12 h-12 animate-spin"></div>
@@ -25,7 +25,7 @@ const VideoBackground = ({ movieId, onVideoEnd }) => {
       )}
 
       <iframe
-        className="w-screen aspect-video"
+        className="w-full aspect-video"
         src={`https://www.youtube.com/embed/${firstTrailer.key}?autoplay=1&mute=1&controls=0&rel=0&showinfo=0&loop=0&playlist=${playlistIds}&enablejsapi=1`}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
