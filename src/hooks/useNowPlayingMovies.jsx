@@ -7,8 +7,6 @@ const useNowPlayingMovies = () => {
   //Fetch movies data from TMDB API and updating it to Redux store.
   const dispatch = useDispatch();
   const getNowPlayingMovies = async () => {
-    console.log("Now playing fn called");
-
     const data = await axios.get(
       "https://api.themoviedb.org/3/movie/now_playing?page=1",
       API_OPTIONS
@@ -30,8 +28,6 @@ const useNowPlayingMovies = () => {
     //   .catch((err) => console.error(err));
   };
   useEffect(() => {
-    console.log("useEffect called");
-
     getNowPlayingMovies();
   }, []);
 };

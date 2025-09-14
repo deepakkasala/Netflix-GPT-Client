@@ -13,13 +13,11 @@ const useMovieTrailer = (movieId) => {
       `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
       API_OPTIONS
     );
-    console.log(data);
 
-    console.log(data.results);
     const filteredTrailers = data.results.filter(
       (video) => video.type === "Trailer"
     );
-    console.log(filteredTrailers);
+    // console.log(filteredTrailers);
     // const trailer = filteredTrailers.length
     //   ? filteredTrailers[0]
     //   : data.results[0];

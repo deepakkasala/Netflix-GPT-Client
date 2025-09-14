@@ -2,8 +2,6 @@ import React, { useRef } from "react";
 import MovieCard from "./MovieCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 const MovieList = ({ title, movies }) => {
-  console.log(title, movies);
-
   const scrollRef = useRef(null);
   const scroll = (direction) => {
     if (!scrollRef.current) return;

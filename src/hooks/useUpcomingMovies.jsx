@@ -8,8 +8,6 @@ const useUpcomingMovies = () => {
   const dispatch = useDispatch();
 
   const getUpcomingMovies = async () => {
-    console.log("Now playing fn called");
-
     const data = await axios.get(
       "https://api.themoviedb.org/3/movie/upcoming?page=1",
       API_OPTIONS
@@ -31,8 +29,6 @@ const useUpcomingMovies = () => {
     //   .catch((err) => console.error(err));
   };
   useEffect(() => {
-    console.log("useEffect called");
-
     getUpcomingMovies();
   }, []);
 };

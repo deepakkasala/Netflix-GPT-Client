@@ -13,8 +13,6 @@ const Header = () => {
   const user = useSelector((state) => state.user);
   // const user = localStorage.getItem("user");
   const handleLogout = () => {
-    console.log("Logout Clicked");
-
     // Perform logout logic here
     dispatch(clearUser());
     localStorage.removeItem("token");

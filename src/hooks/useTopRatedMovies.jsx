@@ -8,8 +8,6 @@ const useTopRatedMovies = () => {
   const dispatch = useDispatch();
 
   const getTopRatedMovies = async () => {
-    console.log("Now playing fn called");
-
     const data = await axios.get(
       "https://api.themoviedb.org/3/movie/top_rated?page=1",
       API_OPTIONS

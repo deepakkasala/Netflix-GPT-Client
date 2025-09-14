@@ -17,14 +17,12 @@ const Login = () => {
   const email = useRef(null);
   const password = useRef(null);
   const user = useSelector((state) => state.user);
-  console.log("User:", user);
 
   const handleBtnClick = async (e) => {
     e.preventDefault();
 
     const emailValue = email.current.value;
     const passwordValue = password.current.value;
-    // console.log(nameValue, emailValue, passwordValue);
 
     const errorMessage = checkValidData(emailValue, passwordValue);
     setErrorMessage(null);
@@ -62,7 +60,7 @@ const Login = () => {
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("user", JSON.stringify(response.data.user));
           // Dispatch user data to Redux store
-          console.log(response.data.user);
+
           dispatch(addUser(response.data.user));
           toast.success(response.data.message);
           email.current.value = null;

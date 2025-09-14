@@ -12,8 +12,6 @@ const useTrendingMovies = (trend) => {
   const dispatch = useDispatch();
 
   const getTrendingMovies = async () => {
-    console.log("Now playing fn called");
-
     const data = await axios.get(
       `https://api.themoviedb.org/3/trending/movie/${trend}`,
       API_OPTIONS

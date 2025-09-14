@@ -8,8 +8,6 @@ const usePopularMovies = () => {
   const dispatch = useDispatch();
 
   const getPopularMovies = async () => {
-    console.log("Now playing fn called");
-
     const data = await axios.get(
       "https://api.themoviedb.org/3/movie/popular?page=1",
       API_OPTIONS
@@ -31,8 +29,6 @@ const usePopularMovies = () => {
     //   .catch((err) => console.error(err));
   };
   useEffect(() => {
-    console.log("useEffect called");
-
     getPopularMovies();
   }, []);
 };
