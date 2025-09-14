@@ -54,10 +54,6 @@ const MovieList = ({ title, movies }) => {
       </div>
     </div>
   );
-
 };
 
 export default MovieList;
-
-{
- 
