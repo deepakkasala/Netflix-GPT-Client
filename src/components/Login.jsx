@@ -43,6 +43,10 @@ const Login = () => {
         });
         if (response.data.success) {
           toast.success(response.data.message);
+          name.current.value = null;
+          email.current.value = null;
+          password.current.value = null;
+          setIsSignIn(true);
         }
       } catch (error) {
         toast.error(error.response.data.message);
@@ -61,6 +65,8 @@ const Login = () => {
           console.log(response.data.user);
           dispatch(addUser(response.data.user));
           toast.success(response.data.message);
+          email.current.value = null;
+          password.current.value = null;
           navigate("/browse");
           // Handle successful login
         }

@@ -13,6 +13,8 @@ const Header = () => {
   const user = useSelector((state) => state.user);
   // const user = localStorage.getItem("user");
   const handleLogout = () => {
+    console.log("Logout Clicked");
+
     // Perform logout logic here
     dispatch(clearUser());
     localStorage.removeItem("token");
@@ -23,7 +25,7 @@ const Header = () => {
   useEffect(() => {}, []);
 
   return (
-    <div className="absolute w-full px-8 py-2 bg-gradient-to-b from-black z-10 flex items-center justify-between">
+    <div className="absolute w-full px-8 py-2 bg-gradient-to-b from-black z-50 flex items-center justify-between">
       <img className="w-44" src={NETFLIX_LOGO} />
       {user && (
         <div className="flex items-center">

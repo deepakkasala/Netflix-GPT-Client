@@ -20,11 +20,11 @@ const useMovieTrailer = (movieId) => {
       (video) => video.type === "Trailer"
     );
     console.log(filteredTrailers);
-    const trailer = filteredTrailers.length
-      ? filteredTrailers[0]
-      : data.results[0];
-    console.log(trailer);
-    dispatch(addTrailerVideo(trailer));
+    // const trailer = filteredTrailers.length
+    //   ? filteredTrailers[0]
+    //   : data.results[0];
+    // console.log(trailer);
+    dispatch(addTrailerVideo(filteredTrailers));
   };
 
   useEffect(() => {
