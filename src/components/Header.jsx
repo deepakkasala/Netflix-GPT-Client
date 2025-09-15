@@ -5,13 +5,24 @@ import { clearUser } from "../redux/userSlice";
 import toast from "react-hot-toast";
 import { replace, useLocation, useNavigate } from "react-router-dom";
 import { NETFLIX_LOGO, USER_AVATAR } from "../utils/constants";
+import { toggleShowGptSearch } from "../redux/gptSlice";
+import { supported_languages } from "../utils/languageConstants";
+import { changeLanguage } from "../redux/configSlice";
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
   const user = useSelector((state) => state.user);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   // const user = localStorage.getItem("user");
+  const handleGptSearchClick = () => {
+    dispatch(toggleShowGptSearch());
+  };
+  const handleLanguageChange = (e) => {
+    // console.log(e.target.value);
+    dispatch(changeLanguage(e.target.value));
+  };
   const handleLogout = () => {
     // Perform logout logic here
     dispatch(clearUser());
@@ -34,7 +45,30 @@ const Header = () => {
       {/* User Section */}
       {user && (
         <div className="flex items-center gap-3 sm:gap-4">
-          <img src={USER_AVATAR} alt="User Avatar" className="w-8 sm:w-10" />
+          {showGptSearch && (
+            <select
+              onChange={handleLanguageChange}
+              className="w-48 px-3 py-2 rounded-lg border border-gray-300 bg-gray-900 text-white shadow-sm cursor-pointer"
+            >
+              {supported_languages.map((lang) => (
+                <option key={lang.identifier} value={lang.identifier}>
+                  {lang.language}
+                </option>
+              ))}
+            </select>
+          )}
+
+          <button
+            onClick={handleGptSearchClick}
+            className="text-white bg-violet-800 px-4 py-2.5 mx-1 rounded hover:cursor-pointer hover:bg-purple-950"
+          >
+            {showGptSearch ? "Home" : "GPT Search"}
+          </button>
+          <img
+            src={USER_AVATAR}
+            alt="User Avatar"
+            className="w-8 sm:w-10 rounded"
+          />
           <button
             onClick={handleLogout}
             className="text-white text-xl sm:text-2xl cursor-pointer hover:scale-110 transition-all duration-300 hover:bg-black rounded-full p-1 sm:p-2"

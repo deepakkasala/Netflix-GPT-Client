@@ -21,6 +21,13 @@
 - Updated the trailer video to redux store.
 - Integrated the embedded code of Youtube to make the trailer to video play
 - Added auto play functionality to trailer video
+- Built secondary container.
+- Added new hooks to fetch movies data where each hook fetches a kind of movies data(i.e, popular, trending, upcoming, top-rated,etc.)
+- Built Movie list container to have each kind of movie data fetched using hooks.
+- Built Movie card to show each movie in the movie list.
+- Added responsiveness to entire app built up to now.
+- Added GPT Search Button to header
+- Built GPT search bar and added dynamic multi-language switching functionality in search bar
 
 # Features
 
