@@ -34,6 +34,7 @@ const GptSearchBar = () => {
     console.log(data.data.results);
     return data.data.results;
   };
+
   const handleGptSearchClick = async () => {
     const GEMINI_API_KEY = import.meta.env.VITE_APP_GEMINI_API_KEY;
     console.log(searchText.current.value);
