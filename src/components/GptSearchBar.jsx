@@ -4,7 +4,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 // import client from "../utils/openai";
 import { GoogleGenAI } from "@google/genai";
-import { API_OPTIONS } from "../utils/constants";
+import { API_OPTIONS, API_URL } from "../utils/constants";
 
 import { addGptMoviesResult } from "../redux/gptSlice";
 
@@ -40,10 +40,9 @@ const GptSearchBar = () => {
     console.log(searchText.current.value);
 
     async function main() {
-      const response = await axios.post(
-        "http://localhost:3070/ai/generate-ai-response",
-        { prompt: searchText.current.value }
-      );
+      const response = await axios.post(API_URL + "ai/generate-ai-response", {
+        prompt: searchText.current.value,
+      });
       console.log(response);
 
       let text = response.data.content;
