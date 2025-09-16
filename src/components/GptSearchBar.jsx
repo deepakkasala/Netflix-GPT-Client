@@ -1,18 +1,18 @@
 import React, { useRef } from "react";
 import { langArray } from "../utils/languageConstants";
-
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 // import client from "../utils/openai";
 import { GoogleGenAI } from "@google/genai";
 import { API_OPTIONS } from "../utils/constants";
-import axios from "axios";
+
 import { addGptMoviesResult } from "../redux/gptSlice";
 
 const GptSearchBar = () => {
   const dispatch = useDispatch();
   const searchText = useRef(null);
   const langKey = useSelector((store) => store.config.lang);
-  console.log(langKey);
+  // console.log(langKey);
 
   // let arr = langArray.filter((lan) => lan[1]);
   let arr = langArray.filter((lang) => {
@@ -20,7 +20,7 @@ const GptSearchBar = () => {
       return lang[1];
     }
   });
-  console.log(arr[0][1]);
+  // console.log(arr[0][1]);
 
   // console.log(langArray[0]);
   // console.log(langArray[1]);
@@ -36,24 +36,17 @@ const GptSearchBar = () => {
   };
 
   const handleGptSearchClick = async () => {
-    const GEMINI_API_KEY = import.meta.env.VITE_APP_GEMINI_API_KEY;
+    // const GEMINI_API_KEY = import.meta.env.VITE_APP_GEMINI_API_KEY;
     console.log(searchText.current.value);
-    const gptQuery =
-      "Act as a movie recommendation system and suggest some movies for the query: " +
-      searchText.current.value +
-      ". Only give me names of 5 movies, comma separated like the example result given ahead. The result should be in a proper json format lets say example: {result:'Bahubali, RRR, The Conjuring: Last Rites, The Naked Gun, Interstellar'}";
-    const ai = new GoogleGenAI({
-      apiKey: GEMINI_API_KEY,
-      dangerouslyAllowBrowser: true,
-    });
 
     async function main() {
-      const response = await ai.models.generateContent({
-        model: "gemini-2.0-flash-001",
-        contents: gptQuery,
-      });
-      // Get the raw text response
-      let text = response.text;
+      const response = await axios.post(
+        "http://localhost:3070/ai/generate-ai-response",
+        { prompt: searchText.current.value }
+      );
+      console.log(response);
+
+      let text = response.data.content;
       console.log("Raw:", text);
       // Remove Markdown-style ```json ... ``` wrappers if they exist
       text = text.replace(/```json|```/g, "").trim();
@@ -83,13 +76,6 @@ const GptSearchBar = () => {
     }
 
     main();
-    // const response = await client.responses.create({
-    //   model: "gpt-4.1-mini",
-    //   instructions: "You are a coding assistant that talks like a pirate",
-    //   input: "Are semicolons optional in JavaScript?",
-    // });
-
-    // console.log(response.output_text);
   };
 
   return (
