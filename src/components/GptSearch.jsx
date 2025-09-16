@@ -7,7 +7,7 @@ const GptSearch = () => {
   return (
     <div>
       {/* Background Image with overlay */}
-      <div className="absolute inset-0 -z-10">
+      <div className="fixed inset-0 -z-10">
         <img
           className="w-full h-full object-cover"
           src={BACKGROUND_IMAGE}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { langArray } from "../utils/languageConstants";
 
 import { useDispatch, useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import { addGptMoviesResult } from "../redux/gptSlice";
 
 const GptSearchBar = () => {
   const dispatch = useDispatch();
+  const searchText = useRef(null);
   const langKey = useSelector((store) => store.config.lang);
   console.log(langKey);
 
@@ -92,9 +93,13 @@ const GptSearchBar = () => {
 
   return (
     <div className="pt-[10%] flex justify-center">
-      <form className="flex bg-black w-1/2 shadow-lg shadow-slate-600">
+      <form
+        className="flex bg-black w-1/2 shadow-lg shadow-slate-600"
+        onSubmit={(e) => e.preventDefault()}
+      >
         <input
           type="text"
+          ref={searchText}
           placeholder={arr[0][1].gptSearchPlaceholder}
           className="p-4 m-4 bg-gray-900 border border-gray-700 w-4/5 text-white rounded"
         />

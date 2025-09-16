@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import MovieCard from "./MovieCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-const MovieList = ({ title, movies }) => {
+const MovieList = ({ title, movies, gptMovieSuggestions }) => {
   const scrollRef = useRef(null);
   const scroll = (direction) => {
     if (!scrollRef.current) return;
@@ -38,7 +38,11 @@ const MovieList = ({ title, movies }) => {
           className="flex overflow-x-scroll scrollbar-hide space-x-2 sm:space-x-3 scroll-smooth overflow-y-hidden"
         >
           {movies?.map((movie) => (
-            <MovieCard key={movie.id} posterUrl={movie.poster_path} />
+            <MovieCard
+              key={movie.id}
+              posterUrl={movie.poster_path}
+              gptMovieSuggestions={gptMovieSuggestions}
+            />
           ))}
         </div>
 
