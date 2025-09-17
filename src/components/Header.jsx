@@ -41,7 +41,7 @@ const Header = () => {
     <header className="absolute top-0 left-0 w-full px-4 sm:px-6 md:px-8 py-3 sm:py-4 bg-gradient-to-b from-black z-50 flex items-center justify-between">
       {/* Netflix Logo */}
       <img
-        className="w-28 sm:w-32 md:w-36 lg:w-44 cursor-pointer"
+        className="w-22 sm:w-32 md:w-36 lg:w-44 cursor-pointer"
         src={NETFLIX_LOGO}
         alt="Netflix Logo"
       />
@@ -64,7 +64,7 @@ const Header = () => {
 
           <button
             onClick={handleGptSearchClick}
-            className="text-white bg-violet-800 px-4 py-2.5 mx-1 rounded hover:cursor-pointer hover:bg-purple-950"
+            className="w-36 text-white bg-violet-800 px-4 py-2.5 mx-1 rounded hover:cursor-pointer hover:bg-purple-950"
           >
             {showGptSearch ? "Home" : "GPT Search"}
           </button>
