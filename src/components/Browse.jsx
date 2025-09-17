@@ -30,7 +30,7 @@ const Browse = () => {
     // simulate a global loader until everything is mounted
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // wait 1.5s for all hooks to run
+    }, 1500); // wait 1.5s for all hooks to run
 
     return () => clearTimeout(timer);
   }, [loading]);
@@ -48,15 +48,7 @@ const Browse = () => {
           <SecondaryContainer />
         </>
       )}
-
-      {/*       
-        -MainContainer
-            -Video Container 
-            -Video Title 
-        -SecondaryContainer
-            -MoviesList*n
-              -Cards*n
-    */}
+      <div className="w-full h-40 bg-black">Footer</div>
     </div>
   );
 };

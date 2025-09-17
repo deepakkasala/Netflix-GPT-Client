@@ -8,6 +8,7 @@ import { NETFLIX_LOGO, USER_AVATAR } from "../utils/constants";
 import { toggleShowGptSearch } from "../redux/gptSlice";
 import { supported_languages } from "../utils/languageConstants";
 import { changeLanguage } from "../redux/configSlice";
+import axios from "axios";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -25,9 +26,11 @@ const Header = () => {
   };
   const handleLogout = () => {
     // Perform logout logic here
-    dispatch(clearUser());
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    delete axios.defaults.headers.common["Authorization"];
+    dispatch(clearUser());
+    dispatch({ type: "auth/clearToken" });
     toast.success("Logged out successfully");
     navigate("/");
   };

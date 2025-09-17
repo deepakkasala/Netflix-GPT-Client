@@ -28,6 +28,35 @@
 - Added responsiveness to entire app built up to now.
 - Added GPT Search Button to header
 - Built GPT search bar and added dynamic multi-language switching functionality in search bar
+- Connected App to Gemini AI via gemini Api key, and implemented GPT search functionality in our application.
+- After fetching movies from GPT exposed movie list to TMDB API to get the movies data.
+- Built GPT Suggestion bar to show resultant movies.
+- Used Movie List and Movie Card components to render resultant movies on suggestions page.
+- improved over all performance of the application by limiting the number of API calls made to TMDB through memoization in every hook.
+- Made the App fully responsive.
+- Faced issues while calling TMDB apis directly from frontend due to DNS/ISP network issues with TMDB website in our region (INDIA).
+- So the entire TMDB API calling logic is moved to backend by creating REST API endpoints to each & every API of TMDB.
+- And after testing the backend apis in postman, finally integrated Backend APIS with frontend
+
+# Features
+
+- Login/SignUp
+
+  - Login/SignUp form.
+  - Redirect to Browse page after successful Login.
+
+- Browse (after authentication):
+
+  - Header
+  - Main Movie
+    - Trailer & Background
+    - Title & Description
+    - Movie Suggestions
+      - Movie List \* N
+
+- Netflix-GPT
+  - Search Bar
+  - Movie Suggestions.
 
 # Features
 

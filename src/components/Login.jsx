@@ -57,11 +57,15 @@ const Login = () => {
           password: passwordValue,
         });
         if (response.data.success) {
-          localStorage.setItem("token", response.data.token);
-          localStorage.setItem("user", JSON.stringify(response.data.user));
+          const { user, token } = response.data;
+          localStorage.setItem("token", token);
+          localStorage.setItem("user", JSON.stringify(user));
+          axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${response.data.token}`;
           // Dispatch user data to Redux store
-
-          dispatch(addUser(response.data.user));
+          dispatch(addUser({ user, token }));
+          dispatch({ type: "auth/setToken", payload: token });
           toast.success(response.data.message);
           email.current.value = null;
           password.current.value = null;
@@ -69,8 +73,8 @@ const Login = () => {
           // Handle successful login
         }
       } catch (error) {
-        toast.error(error.response.data.message);
-        setErrorMessage(error.response.data.message);
+        toast.error(error.response?.data?.message || "Login failed");
+        setErrorMessage(error.response?.data?.message || "Login failed");
       }
     }
     // Handle sign in or sign up logic

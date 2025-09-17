@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { API_OPTIONS } from "../utils/constants";
+import { API_URL } from "../utils/constants";
 import { addTrailerVideo } from "../redux/moviesSlice";
 import { useEffect } from "react";
 
@@ -9,20 +9,18 @@ const useMovieTrailer = (movieId) => {
 
   //fetch trailer video and updating the store with trailer video.
   const getMovieVideos = async () => {
-    const { data } = await axios.get(
-      `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
-      API_OPTIONS
-    );
+    try {
+      const { data } = await axios.get(
+        `${API_URL}tmdb/get-trailers/${movieId}`
+      );
 
-    const filteredTrailers = data.results.filter(
-      (video) => video.type === "Trailer"
-    );
-    // console.log(filteredTrailers);
-    // const trailer = filteredTrailers.length
-    //   ? filteredTrailers[0]
-    //   : data.results[0];
-    // console.log(trailer);
-    dispatch(addTrailerVideo(filteredTrailers));
+      const filteredTrailers = data.trailers.filter(
+        (video) => video.type === "Trailer"
+      );
+      dispatch(addTrailerVideo(filteredTrailers));
+    } catch (error) {
+      console.log("Error in fetching Trailer Videos", error);
+    }
   };
 
   useEffect(() => {
