@@ -7,10 +7,12 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addUser, clearUser } from "../redux/userSlice";
+import { Eye, EyeOff } from "lucide-react"; // lightweight icons
 
 const Login = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
+  const [showPassword, setShowPassword] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const name = useRef(null);
@@ -25,7 +27,8 @@ const Login = () => {
     const passwordValue = password.current.value;
 
     const errorMessage = checkValidData(emailValue, passwordValue);
-    setErrorMessage(null);
+    setErrorMessage(errorMessage);
+    // toast.error(errorMessage);
     if (errorMessage) return;
 
     // Proceed with sign in or sign up
@@ -39,6 +42,7 @@ const Login = () => {
           email: emailValue,
           password: passwordValue,
         });
+        log;
         if (response.data.success) {
           toast.success(response.data.message);
           name.current.value = null;
@@ -115,20 +119,31 @@ const Login = () => {
         )}
 
         {/* Email */}
-        <input
-          type="email"
-          placeholder="Email address"
-          className="p-3 my-2 w-full text-gray-100 bg-black border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-red-600"
-          ref={email}
-        />
+        <div>
+          <input
+            type="email"
+            placeholder="Email address"
+            className="p-3 my-2 w-full text-gray-100 bg-black border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-red-600 pr-10"
+            ref={email}
+          />
+        </div>
 
         {/* Password */}
-        <input
-          type="password"
-          placeholder="Password"
-          className="p-3 my-2 w-full text-gray-100 bg-black border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-red-600"
-          ref={password}
-        />
+        <div className="relative">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            className="p-3 my-2 w-full text-gray-100 bg-black border border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-red-600 pr-10"
+            ref={password}
+          />
+          <button
+            type="button"
+            onClick={() => setShowPassword(!showPassword)}
+            className="absolute inset-y-0 right-3 flex items-center text-gray-400 hover:text-white focus:outline-none"
+          >
+            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+          </button>
+        </div>
 
         {/* Error */}
         {errorMessage && (

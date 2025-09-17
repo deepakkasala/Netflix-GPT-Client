@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import useMovieTrailer from "../hooks/useMovieTrailer";
+import Loader from "./Loader";
 
 const VideoBackground = ({ movieId, onVideoEnd }) => {
   const trailers = useSelector((store) => store?.movies?.trailerVideo);
@@ -18,11 +19,7 @@ const VideoBackground = ({ movieId, onVideoEnd }) => {
 
   return (
     <div className="w-full relative">
-      {isLoading && (
-        <div className="absolute inset-0 flex items-center justify-center bg-black/80 z-20">
-          <div className="loader border-4 border-t-4 border-gray-200 rounded-full w-12 h-12 animate-spin"></div>
-        </div>
-      )}
+      {isLoading && <Loader />}
 
       <iframe
         className="w-full aspect-video"
