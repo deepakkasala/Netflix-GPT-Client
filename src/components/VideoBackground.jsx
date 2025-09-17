@@ -18,7 +18,7 @@ const VideoBackground = ({ movieId, onVideoEnd }) => {
   const playlistIds = trailers.map((t) => t.key).join(",");
 
   return (
-    <div className="w-full relative">
+    <div className="w-full relative mt-10 sm:mt-0 md:mt-0 lg:mt-0 xl:mt0">
       {isLoading && <Loader />}
 
       <iframe
