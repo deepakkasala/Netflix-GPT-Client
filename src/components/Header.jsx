@@ -5,7 +5,7 @@ import { clearUser } from "../redux/userSlice";
 import toast from "react-hot-toast";
 import { replace, useLocation, useNavigate } from "react-router-dom";
 import { NETFLIX_LOGO, USER_AVATAR } from "../utils/constants";
-import { toggleShowGptSearch } from "../redux/gptSlice";
+import { clearGpt, toggleShowGptSearch } from "../redux/gptSlice";
 import { supported_languages } from "../utils/languageConstants";
 import { changeLanguage } from "../redux/configSlice";
 import axios from "axios";
@@ -29,6 +29,7 @@ const Header = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
     delete axios.defaults.headers.common["Authorization"];
+    dispatch(clearGpt(null));
     dispatch(clearUser());
     dispatch({ type: "auth/clearToken" });
     toast.success("Logged out successfully");

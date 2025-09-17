@@ -93,13 +93,17 @@ import { langArray } from "../utils/languageConstants";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { API_URL } from "../utils/constants";
-import { addGptMoviesResult } from "../redux/gptSlice";
+import {
+  addGptMoviesResult,
+  clearGpt,
+  toggleIsGptSuggestionsLoading,
+} from "../redux/gptSlice";
 
 const GptSearchBar = () => {
   const dispatch = useDispatch();
   const searchText = useRef(null);
+  // const clearGpt = useSelector((store) => store.gpt.clearGpt);
   const langKey = useSelector((store) => store.config.lang);
-
   let arr = langArray.filter((lang) => {
     if (lang[0] === langKey) {
       return lang[1];
@@ -112,6 +116,7 @@ const GptSearchBar = () => {
   };
 
   const handleGptSearchClick = async () => {
+    dispatch(toggleIsGptSuggestionsLoading(true));
     // const GEMINI_API_KEY = import.meta.env.VITE_APP_GEMINI_API_KEY;
     console.log(searchText.current.value);
 
@@ -136,18 +141,28 @@ const GptSearchBar = () => {
         dispatch(
           addGptMoviesResult({ movieNames: result, movieResults: tmdbResults })
         );
+        dispatch(toggleIsGptSuggestionsLoading(false));
       } catch (error) {
         console.error("Error parsing JSON:", error);
+        dispatch(toggleIsGptSuggestionsLoading(false));
+      } finally {
+        dispatch(toggleIsGptSuggestionsLoading(false));
       }
     }
 
     main();
   };
 
+  const clearSearch = () => {
+    console.log("Clicked clear");
+    searchText.current.value = null;
+    dispatch(clearGpt(null));
+  };
+
   return (
     <div className="pt-[10%] flex justify-center">
       <form
-        className="flex bg-black w-1/2 shadow-lg shadow-slate-600"
+        className="flex bg-black w-[60%] shadow-lg shadow-slate-600"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
@@ -158,10 +173,16 @@ const GptSearchBar = () => {
         />
         <button
           type="submit"
-          className="w-36 bg-red-500 hover:bg-red-800 text-white m-4 rounded cursor-pointer"
+          className="w-36 bg-red-500 hover:bg-red-800 text-white mx-2 my-4 rounded cursor-pointer"
           onClick={handleGptSearchClick}
         >
           {arr[0][1].search}
+        </button>
+        <button
+          onClick={clearSearch}
+          className="bg-slate-800 text-gray-100 hover:cursor-pointer w-36 my-4 mx-2 rounded p-2"
+        >
+          Clear search
         </button>
       </form>
     </div>

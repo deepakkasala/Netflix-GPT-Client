@@ -48,7 +48,6 @@ const Browse = () => {
           <SecondaryContainer />
         </>
       )}
-      <div className="w-full h-40 bg-black">Footer</div>
     </div>
   );
 };
