@@ -26,16 +26,16 @@ const Browse = () => {
   useTrendingMovies("day");
   useTrendingMovies("week");
 
-  useEffect(() => {
-    // simulate a global loader until everything is mounted
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1500); // wait 1.5s for all hooks to run
+  // useEffect(() => {
+  //   // simulate a global loader until everything is mounted
+  //   const timer = setTimeout(() => {
+  //     setLoading(false);
+  //   }, 1500); // wait 1.5s for all hooks to run
 
-    return () => clearTimeout(timer);
-  }, [loading]);
+  //   return () => clearTimeout(timer);
+  // }, [loading]);
 
-  if (loading) return <Loader />;
+  // if (loading) return <Loader />;
 
   return (
     <div>
