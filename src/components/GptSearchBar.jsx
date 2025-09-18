@@ -155,7 +155,7 @@ const GptSearchBar = () => {
 
   const clearSearch = () => {
     console.log("Clicked clear");
-    searchText.current.value = null;
+    searchText.current.value = "";
     dispatch(clearGpt(null));
   };
 
