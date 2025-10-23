@@ -37,6 +37,13 @@
 - Faced issues while calling TMDB apis directly from frontend due to DNS/ISP network issues with TMDB website in our region (INDIA).
 - So the entire TMDB API calling logic is moved to backend by creating REST API endpoints to each & every API of TMDB.
 - And after testing the backend apis in postman, finally integrated Backend APIS with frontend
+  Add ViewModal component and integrate movie selection functionality
+- Introduced ViewModal component for displaying movie details.
+- Updated MovieCard to handle movie selection and dispatch Redux actions.
+  Enhance TMDB API integration by adding genres endpoint and updating routes; improve user registration and login responses
+- Enhanced Browse component to manage modal visibility and selected movie state.
+- Added new state properties in moviesSlice for modal management.
+- Included moment.js for date formatting in ViewModal.
 
 # Features
 

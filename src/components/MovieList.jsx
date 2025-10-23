@@ -41,6 +41,7 @@ const MovieList = ({ title, movies, gptMovieSuggestions }) => {
             <MovieCard
               key={movie.id}
               posterUrl={movie.poster_path}
+              movie={movie}
               gptMovieSuggestions={gptMovieSuggestions}
             />
           ))}

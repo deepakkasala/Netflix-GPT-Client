@@ -10,6 +10,8 @@ const moviesSlice = createSlice({
     trendingMoviesDay: null,
     trendingMoviesWeek: null,
     trailerVideo: null,
+    isViewModal: false,
+    selectedMovie: null,
   },
   reducers: {
     addNowPlayingMovies: (state, action) => {
@@ -33,6 +35,12 @@ const moviesSlice = createSlice({
     addTrailerVideo: (state, action) => {
       state.trailerVideo = action.payload;
     },
+    setIsViewModal: (state, action) => {
+      state.isViewModal = action.payload;
+    },
+    setSelectedMovie: (state, action) => {
+      state.selectedMovie = action.payload;
+    },
   },
 });
 
@@ -44,5 +52,7 @@ export const {
   addTrendingMoviesDay,
   addTrendingMoviesWeek,
   addTrailerVideo,
+  setIsViewModal,
+  setSelectedMovie,
 } = moviesSlice.actions;
 export default moviesSlice.reducer;
