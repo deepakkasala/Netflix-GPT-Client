@@ -44,6 +44,13 @@
 - Enhanced Browse component to manage modal visibility and selected movie state.
 - Added new state properties in moviesSlice for modal management.
 - Included moment.js for date formatting in ViewModal.
+- Implement payment processing with Razorpay and add user subscription management
+- Enhance Header component with navigation links and user greeting
+- Update ViewModal to fetch and display detailed movie information, including IMDb ID and watchlist functionality
+- Implement watchlist management in userSlice for adding/removing movies
+- Create BrowseByLanguages component for language-based browsing
+- Add ChangePlan component for subscription management with Razorpay integration
+- Develop MyList component to display user's watchlist with loading state and modal functionality
 
 # Features
 
