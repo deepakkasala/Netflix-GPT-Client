@@ -120,7 +120,7 @@ const ChangePlan = () => {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [processing, setProcessing] = useState(false);
   const user = useSelector((state) => state.user);
-  console.log(user);
+  console.log("User obj inside ChangePlan:", user);
 
   const dispatch = useDispatch();
 
@@ -189,7 +189,7 @@ const ChangePlan = () => {
       }
 
       // 1) Create order on server
-      const userId = user._id;
+      const userId = user._id || user.id || user.user._id || user.user.id;
       console.log(userId);
 
       const createOrderResp = await axios.post(
