@@ -83,11 +83,11 @@ const Header = () => {
                 <p className="text-white">
                   <span>Hello</span>
                   <span className="font-bold ml-1">
-                    {user.user.name || user.name},
+                    {user.name || user.user.name},
                   </span>
                 </p>
                 <p className="text-white">
-                  {user.user.searchesLeft || user.searchesLeft}
+                  {user.searchesLeft || user.user.searchesLeft}
                   <span className="font-bold ml-1">GPT Searches Left</span>
                 </p>
                 <select
@@ -106,7 +106,7 @@ const Header = () => {
               <p className="text-white">
                 <span>Hello</span>
                 <span className="font-bold ml-1">
-                  {user.user.name || user.name},
+                  {user.name || user.user.name},
                 </span>
               </p>
             )}
