@@ -37,7 +37,7 @@ const Header = () => {
     toast.success("Logged out successfully");
     navigate("/");
   };
-  useEffect(() => {}, []);
+  useEffect(() => {}, [user]);
 
   return (
     <div>
@@ -50,7 +50,7 @@ const Header = () => {
             alt="Netflix Logo"
           />
 
-          {/* Navbar right beside the Netflix icon with [Home, Mylist and Browse by Language] options navigation using React Router */}
+          {/* Navbar right beside the Netflix icon with [Home, My-list and Browse by Language] options navigation using React Router */}
           {!showGptSearch && (
             <nav className="hidden md:flex items-center gap-6">
               <Link
@@ -71,6 +71,12 @@ const Header = () => {
               >
                 Browse by Languages
               </Link>
+              <Link
+                to="/change-plan"
+                className="text-gray-300 hover:underline hover:cursor-pointer"
+              >
+                Change Plan
+              </Link>
             </nav>
           )}
         </div>
@@ -83,11 +89,12 @@ const Header = () => {
                 <p className="text-white">
                   <span>Hello</span>
                   <span className="font-bold ml-1">
-                    {user.name || user.user.name},
+                    User
+                    {/* {user.name || user.user.name}, */}
                   </span>
                 </p>
                 <p className="text-white">
-                  {user.searchesLeft || user.user.searchesLeft}
+                  {user.user.searchesLeft || user.searchesLeft}
                   <span className="font-bold ml-1">GPT Searches Left</span>
                 </p>
                 <select
@@ -106,7 +113,8 @@ const Header = () => {
               <p className="text-white">
                 <span>Hello</span>
                 <span className="font-bold ml-1">
-                  {user.name || user.user.name},
+                  User
+                  {/* {user.name || user.user.name}, */}
                 </span>
               </p>
             )}

@@ -37,6 +37,10 @@ const userSlice = createSlice({
   initialState: null,
   reducers: {
     addUser: (state, action) => action.payload,
+    updateUser: (state, action) => {
+      if (!state) return state;
+      return { ...state, ...action.payload };
+    },
     clearUser: () => null,
     // ➕ Add to WatchList
     addToWatchList: (state, action) => {

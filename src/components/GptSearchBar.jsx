@@ -56,6 +56,12 @@ const GptSearchBar = () => {
         await axios.post(`${API_URL}auth/decrement-search`, {
           userId: user.id,
         });
+        console.log("Searches Decremented");
+
+        await axios.get(`${API_URL}auth/get-user-info`).then((res) => {
+          console.log(res.data.user);
+          dispatch({ type: "user/updateUser", payload: res.data.user });
+        });
       } catch (error) {
         console.error("Error parsing JSON:", error);
         dispatch(toggleIsGptSuggestionsLoading(false));
