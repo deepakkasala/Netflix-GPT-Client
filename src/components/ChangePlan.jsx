@@ -228,7 +228,7 @@ const ChangePlan = () => {
                 razorpay_payment_id: response.razorpay_payment_id,
                 razorpay_signature: response.razorpay_signature,
                 planId: plan.id,
-                userId: user.id || user._id,
+                userId: user._id || user.id || user.user._id || user.user.id,
                 planMeta: plan.gpt,
               },
               { withCredentials: true }
